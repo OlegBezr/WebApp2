@@ -4,7 +4,7 @@ from forms import UsersForm
 from models import db, User
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:olezhechkab@localhost/usersdb'
+heroku = Heroku(app)
 
 db.init_app(app)
 
