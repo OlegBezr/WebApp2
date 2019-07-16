@@ -22,7 +22,7 @@ def add_user():
 			new_user = User(first_name=first_name, age=age)
 			db.session.add(new_user)
 			db.session.commit()
-			return redirect(url_for('view_users'))
+			return redirect(url_for('add_user'))
 
 @app.route('/view-users')
 def view_users():
