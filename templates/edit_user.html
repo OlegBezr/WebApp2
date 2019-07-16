@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <main class="container signup-section">
+  	<h2>Edit user. User id: {{ user.user_id }}</h2>
+    <div class="container">
+    	<div class="row">
+    		<form form method="POST" action="/add-user">
+    			{{ form.hidden_tag() }}
+	    		<div class="form-group">
+			    	<label for="first_name">{{ form.first_name.label }}</label>
+		      		{% if form.first_name.errors %}
+		        		{% for error in form.first_name.errors %}
+		          			<p class="error-message">{{ error }}</p>
+		        		{% endfor %}
+		      		{% endif %}
+
+		      		{{ form.first_name(class="form-control", placeholder=user.first_name) }}
+			  	</div>
+			    <div class="form-group">
+			    	<label for="age">{{ form.age.label }}</label>
+			        {% if form.age.errors %}
+			            {% for error in form.age.errors %}
+			            <p class="error-message">{{ error }}</p>
+			            {% endfor %}
+			        {% endif %}
+
+			        {{ form.age(class="form-control", placeholder=user.age) }}
+			  	</div>
+			  	{{ form.submit(class="btn btn-primary") }}
+			</form>
+		</div>
+
+		<br>
+
+		<div class="row">
+        	<a class="btn btn-primary" href="/">
+          		Main Menu
+          	</a>
+    	</div>
+    </div>
+  </main>
+{% endblock %}

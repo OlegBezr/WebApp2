@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <main class="container signup-section">
+    <div>
+      <h2>View Users</h2>
+
+      <div class="container">
+        <div class="row">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">user_id</th>
+                <th scope="col">first_name</th>
+                <th scope="col">age</th>
+                <th scope="col">operations</th>
+              </tr>
+            </thead>
+            {% for user in users %}
+              <tbody>
+                <tr>
+                  <th scope="row">{{ user.user_id }}</th>
+                  <td>{{ user.first_name }}</td>
+                  <td>{{ user.age }}</td>
+                  <td>
+                    <a class="btn btn-primary btn-sm" href="/delete-user/{{user.user_id}}" onclick="return confirm('Are you sure, you want to delete user: {{ user.user_id }}) {{ user.first_name }}, {{ user.age }}?')"> 
+                      Delete 
+                    </a>
+                    <a class="btn btn-primary btn-sm" href="/update-user/{{user.user_id}}">
+                      Update
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            {% endfor %}
+          </table>
+        </div>
+
+      <div class="row">
+        <a class="btn btn-primary" href="/">
+              Main Menu
+        </a>
+      </div>
+    </div>
+  </main>
+{% endblock %}
